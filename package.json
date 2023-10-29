@@ -3,7 +3,7 @@
   "displayName": "HelloWorld",
   "version": "0.0.1",
   "packageManager": "pnpm@8.9.2",
-  "description": "",
+  "description": "vscode-demo",
   "categories": [
     "Other"
   ],
