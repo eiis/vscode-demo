@@ -1,14 +1,15 @@
 {
-  "name": "helloworld",
-  "displayName": "HelloWorld",
-  "version": "0.0.1",
+  "publisher": "eiis",
+  "name": "currenttime",
+  "displayName": "current_time",
+  "version": "1.0.0",
   "packageManager": "pnpm@8.9.2",
-  "description": "vscode-demo",
+  "description": "Current Time Status Bar",
   "categories": [
     "Other"
   ],
   "main": "./dist/index.js",
-  "icon": "res/icon.png",
+  "icon": "src/assets/chat.png",
   "files": [
     "dist"
   ],
@@ -24,6 +25,10 @@
       {
         "command": "hello.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "extension.showMessage",
+        "title": "Show Message"
       },
       {
         "command": "extension.openFloatingWindow",
