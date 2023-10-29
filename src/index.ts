@@ -3,6 +3,37 @@ import * as vscode from 'vscode'
 export function activate(context: vscode.ExtensionContext) {
   console.log('Your extension "function-commenter" is now active!')
 
+  // const ex: vscode.Extension<any> | undefined = vscode.extensions.getExtension('@e_iis.helloworld')
+  // console.log(ex)
+
+  // const version: string = ex ? ex.packageJSON.version : ''
+  // vscode.window.showInformationMessage(`Background Cover Extension Version: ${version}`)
+
+  // 创建状态栏按钮
+  const statusBarBtn = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100)
+  statusBarBtn.tooltip = 'Current Time'
+
+  // 显示当前时间并设置一个间隔每秒更新一次
+  const updateCurrentTime = () => {
+    const currentTime = new Date().toLocaleTimeString()
+    statusBarBtn.text = currentTime
+  }
+
+  // 初始化时间
+  updateCurrentTime()
+
+  // 每秒更新一次时间
+  const interval = setInterval(updateCurrentTime, 1000)
+
+  statusBarBtn.show()
+
+  // 当扩展被停用时，清除间隔以防止内存泄露
+  context.subscriptions.push({
+    dispose: () => {
+      clearInterval(interval)
+    },
+  })
+
   const disposable = vscode.commands.registerCommand('extension.addFunctionComment', () => {
     // 获取当前编辑器
     const editor = vscode.window.activeTextEditor
@@ -36,7 +67,8 @@ export function activate(context: vscode.ExtensionContext) {
         const range = document.getWordRangeAtPosition(position)
         const word = document.getText(range)
 
-        return new vscode.Hover(word)
+        if (word)
+          return new vscode.Hover('🐶🐷🐔🦊加入开发者微信群聊🐯🐮🐹🐽❓')
       },
     },
   )
