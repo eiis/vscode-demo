@@ -60,18 +60,18 @@ export function activate(context: vscode.ExtensionContext) {
     }
   })
 
-  const hoverProvider = vscode.languages.registerHoverProvider(
-    { pattern: '**/*.js' }, // 你可以指定为特定的文件类型，这里我们选择了所有的JS文件
-    {
-      provideHover(document, position, _token) {
-        const range = document.getWordRangeAtPosition(position)
-        const word = document.getText(range)
+  // const hoverProvider = vscode.languages.registerHoverProvider(
+  //   { pattern: '**/*.js' }, // 你可以指定为特定的文件类型，这里我们选择了所有的JS文件
+  //   {
+  //     provideHover(document, position, _token) {
+  //       const range = document.getWordRangeAtPosition(position)
+  //       const word = document.getText(range)
 
-        if (word)
-          return new vscode.Hover('🐶🐷🐔🦊加入开发者微信群聊🐯🐮🐹🐽❓')
-      },
-    },
-  )
+  //       if (word)
+  //         return new vscode.Hover('🐶🐷🐔🦊加入开发者微信群聊🐯🐮🐹🐽❓')
+  //     },
+  //   },
+  // )
 
   const completionProvider = vscode.languages.registerCompletionItemProvider(
     { pattern: '**/*', language: 'javascript' }, // 你可以根据需要调整文件模式和语言
@@ -93,7 +93,7 @@ export function activate(context: vscode.ExtensionContext) {
   )
 
   context.subscriptions.push(disposable)
-  context.subscriptions.push(hoverProvider)
+  // context.subscriptions.push(hoverProvider)
   context.subscriptions.push(completionProvider)
 }
 
